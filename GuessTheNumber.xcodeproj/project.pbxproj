@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171585AD28AE3E890051DF1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585AC28AE3E890051DF1C /* Constants.swift */; };
 		17EE21E228ADEBE0007077A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E128ADEBE0007077A7 /* AppDelegate.swift */; };
 		17EE21E428ADEBE0007077A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E328ADEBE0007077A7 /* SceneDelegate.swift */; };
-		17EE21E628ADEBE0007077A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E528ADEBE0007077A7 /* ViewController.swift */; };
-		17EE21E928ADEBE0007077A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17EE21E728ADEBE0007077A7 /* Main.storyboard */; };
+		17EE21E628ADEBE0007077A7 /* WellcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E528ADEBE0007077A7 /* WellcomeViewController.swift */; };
 		17EE21EB28ADEBE1007077A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17EE21EA28ADEBE1007077A7 /* Assets.xcassets */; };
 		17EE21EE28ADEBE1007077A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17EE21EC28ADEBE1007077A7 /* LaunchScreen.storyboard */; };
+		17EE21F628ADF462007077A7 /* ChooseNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21F528ADF462007077A7 /* ChooseNumberViewController.swift */; };
+		17EE21F828ADF7DA007077A7 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21F728ADF7DA007077A7 /* UtilityExtensions.swift */; };
+		17EE21FA28AE2286007077A7 /* ComputerGuessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21F928AE2286007077A7 /* ComputerGuessViewController.swift */; };
+		17EE21FC28AE291D007077A7 /* ComparisonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21FB28AE291D007077A7 /* ComparisonButton.swift */; };
+		17EE21FF28AE314A007077A7 /* UserGuessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21FE28AE314A007077A7 /* UserGuessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		171585AC28AE3E890051DF1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		17EE21DE28ADEBE0007077A7 /* GuessTheNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EE21E128ADEBE0007077A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17EE21E328ADEBE0007077A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		17EE21E528ADEBE0007077A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		17EE21E828ADEBE0007077A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		17EE21E528ADEBE0007077A7 /* WellcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomeViewController.swift; sourceTree = "<group>"; };
 		17EE21EA28ADEBE1007077A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17EE21ED28ADEBE1007077A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17EE21EF28ADEBE1007077A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17EE21F528ADF462007077A7 /* ChooseNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNumberViewController.swift; sourceTree = "<group>"; };
+		17EE21F728ADF7DA007077A7 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
+		17EE21F928AE2286007077A7 /* ComputerGuessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerGuessViewController.swift; sourceTree = "<group>"; };
+		17EE21FB28AE291D007077A7 /* ComparisonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonButton.swift; sourceTree = "<group>"; };
+		17EE21FE28AE314A007077A7 /* UserGuessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGuessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +68,26 @@
 			children = (
 				17EE21E128ADEBE0007077A7 /* AppDelegate.swift */,
 				17EE21E328ADEBE0007077A7 /* SceneDelegate.swift */,
-				17EE21E528ADEBE0007077A7 /* ViewController.swift */,
-				17EE21E728ADEBE0007077A7 /* Main.storyboard */,
+				17EE21FB28AE291D007077A7 /* ComparisonButton.swift */,
+				17EE21F728ADF7DA007077A7 /* UtilityExtensions.swift */,
+				171585AC28AE3E890051DF1C /* Constants.swift */,
+				17EE21FD28AE3011007077A7 /* ViewControllers */,
 				17EE21EA28ADEBE1007077A7 /* Assets.xcassets */,
 				17EE21EC28ADEBE1007077A7 /* LaunchScreen.storyboard */,
 				17EE21EF28ADEBE1007077A7 /* Info.plist */,
 			);
 			path = GuessTheNumber;
+			sourceTree = "<group>";
+		};
+		17EE21FD28AE3011007077A7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				17EE21E528ADEBE0007077A7 /* WellcomeViewController.swift */,
+				17EE21F528ADF462007077A7 /* ChooseNumberViewController.swift */,
+				17EE21F928AE2286007077A7 /* ComputerGuessViewController.swift */,
+				17EE21FE28AE314A007077A7 /* UserGuessViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +150,6 @@
 			files = (
 				17EE21EE28ADEBE1007077A7 /* LaunchScreen.storyboard in Resources */,
 				17EE21EB28ADEBE1007077A7 /* Assets.xcassets in Resources */,
-				17EE21E928ADEBE0007077A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +160,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17EE21E628ADEBE0007077A7 /* ViewController.swift in Sources */,
+				17EE21FC28AE291D007077A7 /* ComparisonButton.swift in Sources */,
+				17EE21F628ADF462007077A7 /* ChooseNumberViewController.swift in Sources */,
+				17EE21E628ADEBE0007077A7 /* WellcomeViewController.swift in Sources */,
+				17EE21F828ADF7DA007077A7 /* UtilityExtensions.swift in Sources */,
 				17EE21E228ADEBE0007077A7 /* AppDelegate.swift in Sources */,
+				17EE21FF28AE314A007077A7 /* UserGuessViewController.swift in Sources */,
+				17EE21FA28AE2286007077A7 /* ComputerGuessViewController.swift in Sources */,
 				17EE21E428ADEBE0007077A7 /* SceneDelegate.swift in Sources */,
+				171585AD28AE3E890051DF1C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		17EE21E728ADEBE0007077A7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				17EE21E828ADEBE0007077A7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		17EE21EC28ADEBE1007077A7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -292,9 +312,9 @@
 				INFOPLIST_FILE = GuessTheNumber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,9 +340,9 @@
 				INFOPLIST_FILE = GuessTheNumber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
