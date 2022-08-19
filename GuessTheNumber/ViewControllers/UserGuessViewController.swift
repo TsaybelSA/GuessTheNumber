@@ -30,8 +30,8 @@ class UserGuessViewController: UIViewController {
 		
 		navigationController?.navigationBar.isHidden = true
 
-		view.backgroundColor = .white
-		
+		view.backgroundColor = K.Colors.appBackgroundColor
+
 		numberPicker.delegate = self
 		numberPicker.dataSource = self
 		
@@ -42,7 +42,7 @@ class UserGuessViewController: UIViewController {
 		view.addSubview(enterTheNumberButton)
 		
 		NSLayoutConstraint.activate([
-			informationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+			informationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
 			informationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			
 			guessNumberField.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 20),
@@ -50,7 +50,7 @@ class UserGuessViewController: UIViewController {
 			guessNumberField.heightAnchor.constraint(equalToConstant: 70),
 			guessNumberField.widthAnchor.constraint(equalToConstant: 300),
 			
-			promptLabel.topAnchor.constraint(equalTo: guessNumberField.bottomAnchor, constant: 20),
+			promptLabel.topAnchor.constraint(equalTo: guessNumberField.bottomAnchor),
 			promptLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
 			promptLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 			promptLabel.heightAnchor.constraint(equalToConstant: 100),
@@ -60,7 +60,7 @@ class UserGuessViewController: UIViewController {
 			questionmarkButton.heightAnchor.constraint(equalToConstant: 100),
 			questionmarkButton.widthAnchor.constraint(equalToConstant: 100),
 			
-			enterTheNumberButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+			enterTheNumberButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
 			enterTheNumberButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			enterTheNumberButton.heightAnchor.constraint(equalToConstant: K.DrawingConstants.buttonHeight),
 			enterTheNumberButton.widthAnchor.constraint(equalToConstant: K.DrawingConstants.buttonWidth)
@@ -71,8 +71,8 @@ class UserGuessViewController: UIViewController {
     
 	lazy var informationLabel: UILabel = {
 		let label = UILabel()
-		label.text = "You are guessing\n\n Try \(gameModel.numberOfTries)"
-		label.font = UIFont.systemFont(ofSize: 25)
+		label.text = "You are guessing\n Try \(gameModel.numberOfTries)"
+		label.font = UIFont.systemFont(ofSize: 30)
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +89,7 @@ class UserGuessViewController: UIViewController {
 		let textField = makeTextField()
 		textField.inputView = numberPicker
 		textField.addTarget(nil, action: #selector(updateEnterNumberButton), for: .editingDidEnd)
+		textField.backgroundColor = K.Colors.secondaryBackgroundColor
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
@@ -100,15 +101,14 @@ class UserGuessViewController: UIViewController {
 		label.numberOfLines = 0
 		label.adjustsFontSizeToFitWidth = true
 		label.textAlignment = .center
-		label.textColor = .red
+		label.textColor = K.Colors.computerTextColor
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
 	var questionmarkButton: UIButton = {
 		let button = UIButton(type: .custom)
-		button.setImage(UIImage(named: "questionmarkLeftArrowNormal"), for: .normal)
-		button.setImage(UIImage(named: "questionmarkLeftArrowHighlighted"), for: .highlighted)
+		button.setImage(UIImage(named: "question-mark"), for: .normal)
 		button.tintColor = .blue
 		button.addTarget(nil, action: #selector(toggleIsShowingHint), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -121,8 +121,8 @@ class UserGuessViewController: UIViewController {
 		button.setTitleColor(UIColor.white, for: .normal)
 		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
 		button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		button.backgroundColor = .blue
-		button.layer.cornerRadius = 25
+		button.backgroundColor = K.Colors.appButtonsColor
+		button.makeBorderedWithShadow(cornerRadius: 25)
 		button.addTarget(nil, action: #selector(enterTheNumberButtonPressed), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button

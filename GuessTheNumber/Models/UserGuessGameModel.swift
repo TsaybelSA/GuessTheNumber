@@ -31,7 +31,7 @@ class UserGuessGameModel {
 		} else if  selectedNumber < numberToGuess {
 			line = "My number is greater than yours."
 		} else {
-			line = "Yes, you guessed my number 👻. \nCongratulations!"
+			line = "Yes, you guessed my number. 👻 \nCongratulations!"
 		}
 		return line
 	}

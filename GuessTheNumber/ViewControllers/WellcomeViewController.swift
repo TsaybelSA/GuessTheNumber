@@ -13,7 +13,7 @@ class WellcomeViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationController?.navigationBar.isHidden = true
-		view.backgroundColor = .white
+		view.backgroundColor = K.Colors.appBackgroundColor
 		
 		view.addSubview(gameLabel)
 		view.addSubview(startGameButton)
@@ -44,8 +44,8 @@ class WellcomeViewController: UIViewController {
 		button.setTitleColor(UIColor.white, for: .normal)
 		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
 		button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		button.backgroundColor = .blue
-		button.layer.cornerRadius = 25
+		button.backgroundColor = K.Colors.appButtonsColor
+		button.makeBorderedWithShadow(cornerRadius: 25)
 		button.addTarget(nil, action: #selector(startGameButtonPressed), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button

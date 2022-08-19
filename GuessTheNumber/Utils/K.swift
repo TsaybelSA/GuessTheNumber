@@ -20,7 +20,10 @@ struct K {
 	}
 	
 	struct Colors {
-		static let appBackgroundColor = UIColor(named: "appBackgroundColor")
-		static let appButtonsColor = UIColor(named: "appButtonsColor")
+		static let appBackgroundColor = UIColor(named: "backgroundColor")
+		static let appButtonsColor = UIColor(named: "buttonsColor")
+		static let secondaryBackgroundColor = UIColor(named: "secondaryBackgroundColor")
+		static let secondaryButtonColor = UIColor(named: "secondaryButtonColor")
+		static let computerTextColor = UIColor(named: "computerTextColor")
 	}
 }

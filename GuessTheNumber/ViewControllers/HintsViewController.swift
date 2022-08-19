@@ -31,7 +31,7 @@ class HintsViewController: UIViewController {
 		
 		navigationController?.navigationBar.isHidden = true
 		
-		view.backgroundColor = UIColor(named: "materialGreen")
+		view.backgroundColor = K.Colors.secondaryBackgroundColor
 		
 		view.addSubview(questionMarkImage)
 		view.addSubview(hintLabel)
@@ -65,7 +65,7 @@ class HintsViewController: UIViewController {
 	lazy private var hintLabel: UILabel = {
 		let label = UILabel()
 		label.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
-		label.textColor = .white
+		label.textColor = .label
 		label.text = hintString
 		label.numberOfLines = 0
 		label.adjustsFontSizeToFitWidth = true
@@ -77,12 +77,13 @@ class HintsViewController: UIViewController {
 		return label
 	}()
 	
-	var hintStateButton: UIButton = {
+	lazy var hintStateButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle(" Show hints", for: .normal)
-		button.setTitleColor(UIColor.white, for: .normal)
+		button.setTitleColor(UIColor.label, for: .normal)
 		button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-		button.tintColor = .white
+		button.setImage(showHintBeforeStart ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square"), for: .normal)
+		button.tintColor = .label
 		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
 		button.addTarget(nil, action: #selector(toggleHintState), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -95,8 +96,8 @@ class HintsViewController: UIViewController {
 		button.setTitleColor(UIColor.white, for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
 		button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		button.backgroundColor = .blue
-		button.layer.cornerRadius = 25
+		button.backgroundColor = K.Colors.secondaryButtonColor
+		button.makeBorderedWithShadow(cornerRadius: 25)
 		button.addTarget(nil, action: #selector(closeView), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button

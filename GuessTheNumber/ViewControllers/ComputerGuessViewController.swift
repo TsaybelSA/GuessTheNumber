@@ -28,8 +28,8 @@ class ComputerGuessViewController: UIViewController {
         super.viewDidLoad()
 		navigationController?.navigationBar.isHidden = true
 
-		view.backgroundColor = .white
-		
+		view.backgroundColor = K.Colors.appBackgroundColor
+
 		gameModel.delegate = self
 		modelHasChanges()
 		
@@ -79,7 +79,7 @@ class ComputerGuessViewController: UIViewController {
 	lazy var informationLabel: UILabel = {
 		let label = UILabel()
 		label.text = "Computer is guessing\n\n Try \(gameModel.numberOfTries)"
-		label.font = UIFont.systemFont(ofSize: 25)
+		label.font = UIFont.systemFont(ofSize: 30)
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -98,11 +98,10 @@ class ComputerGuessViewController: UIViewController {
 		let button = UIButton(type: .system)
 		button.setTitle(comparisonButton.conditionMark, for: .normal)
 		button.tag = comparisonButton.id
-		button.setTitleColor(UIColor.white, for: .normal)
+		button.setTitleColor(.label, for: .normal)
 		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .largeTitle)
 		button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		button.backgroundColor = .blue
-		button.layer.cornerRadius = 25
+		button.makeBorderedWithShadow(cornerRadius: 25)
 		button.addTarget(nil, action: #selector(comparisonButtonPressed), for: .touchUpInside)
 		return button
 	}
@@ -114,6 +113,7 @@ class ComputerGuessViewController: UIViewController {
 		stackView.spacing = 20
 		for comparisonButton in ComparisonButton.buttons {
 			let instanceOfButton = makeComparisonButton(from: comparisonButton)
+			instanceOfButton.backgroundColor = K.Colors.appButtonsColor
 			stackView.addArrangedSubview(instanceOfButton)
 		}
 		stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -122,7 +122,7 @@ class ComputerGuessViewController: UIViewController {
 		
 	var resultsBackground: UIView = {
 		let background = UIView()
-		background.backgroundColor = UIColor(named: "materialGreen")
+		background.backgroundColor = K.Colors.secondaryBackgroundColor
 		background.layer.cornerRadius = 25
 		background.isHidden = true
 		background.translatesAutoresizingMaskIntoConstraints = false
@@ -145,8 +145,8 @@ class ComputerGuessViewController: UIViewController {
 		button.setTitleColor(UIColor.white, for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
 		button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		button.backgroundColor = .blue
-		button.layer.cornerRadius = 25
+		button.backgroundColor = K.Colors.appButtonsColor
+		button.makeBorderedWithShadow(cornerRadius: 25)
 		button.isHidden = true
 		button.addTarget(nil, action: #selector(goToNextScreenButtonPressed), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -155,8 +155,7 @@ class ComputerGuessViewController: UIViewController {
 	
 	var questionmarkButton: UIButton = {
 		let button = UIButton(type: .custom)
-		button.setImage(UIImage(named: "questionmarkLeftArrowNormal"), for: .normal)
-		button.setImage(UIImage(named: "questionmarkLeftArrowHighlighted"), for: .highlighted)
+		button.setImage(UIImage(named: "question-mark"), for: .normal)
 		button.tintColor = .blue
 		button.addTarget(nil, action: #selector(toggleIsShowingHint), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false

@@ -15,8 +15,8 @@ class ChooseNumberViewController: UIViewController {
 		
 		setupToHideKeyboardOnTapOnView()
 		
-		view.backgroundColor = .white
-		
+		view.backgroundColor = K.Colors.appBackgroundColor
+
 		guessNumberChanged()
 		
 		view.addSubview(guessNumberField)
@@ -44,6 +44,7 @@ class ChooseNumberViewController: UIViewController {
 		let textField = makeTextField()
 		textField.addDoneButtonToKeyboard(myAction: #selector(textField.resignFirstResponder))
 		textField.addTarget(nil, action: #selector(guessNumberChanged), for: .editingChanged)
+		textField.backgroundColor = K.Colors.secondaryBackgroundColor
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		return textField
 	}()
@@ -65,8 +66,8 @@ class ChooseNumberViewController: UIViewController {
 		button.setTitleColor(UIColor.white, for: .normal)
 		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
 		button.titleEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		button.backgroundColor = .blue
-		button.layer.cornerRadius = 25
+		button.backgroundColor = K.Colors.appButtonsColor
+		button.makeBorderedWithShadow(cornerRadius: 25)
 		button.addTarget(nil, action: #selector(enterNumberButtonPressed), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
