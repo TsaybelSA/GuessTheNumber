@@ -70,8 +70,6 @@ class HintsViewController: UIViewController {
 		label.numberOfLines = 0
 		label.adjustsFontSizeToFitWidth = true
 		label.textAlignment = .center
-		label.layer.cornerRadius = label.bounds.height / 4
-		label.layer.masksToBounds = true
 		label.font = UIFont.preferredFont(forTextStyle: .title1)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
