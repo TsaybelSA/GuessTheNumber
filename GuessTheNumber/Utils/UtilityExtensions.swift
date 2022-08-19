@@ -100,3 +100,16 @@ extension UILabel {
 		}
 	}
 }
+
+extension UIButton {
+	func makeBorderedWithShadow(cornerRadius: CGFloat? = nil) {
+		self.layer.masksToBounds = false
+		self.layer.cornerRadius = cornerRadius ?? 10
+		self.backgroundColor = K.Colors.appButtonsColor
+		self.layer.borderColor = UIColor.clear.cgColor
+		self.layer.shadowColor = UIColor.black.cgColor
+		self.layer.shadowOffset = CGSize(width: 0, height: 0)
+		self.layer.shadowOpacity = 0.2
+		self.layer.shadowRadius = 8
+	}
+}
