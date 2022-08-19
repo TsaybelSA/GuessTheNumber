@@ -72,7 +72,9 @@ class ChooseNumberViewController: UIViewController {
 	}()
 	
 	@objc func enterNumberButtonPressed() {
-		navigationController?.pushViewController(ComputerGuessViewController(), animated: true)
+		if let text = guessNumberField.text, let number = Int(text) {
+			navigationController?.pushViewController(ComputerGuessViewController(selectedNumber: number), animated: true)
+		}
 	}
 	
 	@objc func guessNumberChanged() {

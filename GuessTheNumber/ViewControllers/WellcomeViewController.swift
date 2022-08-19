@@ -8,6 +8,7 @@
 import UIKit
 
 class WellcomeViewController: UIViewController {
+	//TODO: - add difficulty
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
