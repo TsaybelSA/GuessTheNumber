@@ -19,6 +19,7 @@ class UserGuessViewController: UIViewController {
 	}
 	
 	let gameModel: UserGuessGameModel
+	var hintsControlCenter = HintsControl()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class UserGuessViewController: UIViewController {
 		view.addSubview(informationLabel)
 		view.addSubview(guessNumberField)
 		view.addSubview(promptLabel)
+		view.addSubview(questionmarkButton)
 		view.addSubview(enterTheNumberButton)
 		
 		NSLayoutConstraint.activate([
@@ -53,11 +55,18 @@ class UserGuessViewController: UIViewController {
 			promptLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
 			promptLabel.heightAnchor.constraint(equalToConstant: 100),
 			
+			questionmarkButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
+			questionmarkButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+			questionmarkButton.heightAnchor.constraint(equalToConstant: 100),
+			questionmarkButton.widthAnchor.constraint(equalToConstant: 100),
+			
 			enterTheNumberButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
 			enterTheNumberButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			enterTheNumberButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
-			enterTheNumberButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth)
+			enterTheNumberButton.heightAnchor.constraint(equalToConstant: K.DrawingConstants.buttonHeight),
+			enterTheNumberButton.widthAnchor.constraint(equalToConstant: K.DrawingConstants.buttonWidth)
 			])
+		
+		checkIfNeedHint()
     }
     
 	lazy var informationLabel: UILabel = {
@@ -96,6 +105,16 @@ class UserGuessViewController: UIViewController {
 		return label
 	}()
 	
+	var questionmarkButton: UIButton = {
+		let button = UIButton(type: .custom)
+		button.setImage(UIImage(named: "questionmarkLeftArrowNormal"), for: .normal)
+		button.setImage(UIImage(named: "questionmarkLeftArrowHighlighted"), for: .highlighted)
+		button.tintColor = .blue
+		button.addTarget(nil, action: #selector(toggleIsShowingHint), for: .touchUpInside)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		return button
+	}()
+	
 	var enterTheNumberButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Enter The Number", for: .normal)
@@ -108,6 +127,15 @@ class UserGuessViewController: UIViewController {
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 	}()
+	
+	@objc func toggleIsShowingHint() {
+		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: K.Hints.userGuess) { [weak self] showHintBeforeStart in
+			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
+				self?.hintsControlCenter.toggleHintBeforeStart()
+			}
+		}
+		navigationController?.pushViewController(rulesVC, animated: true)
+	}
 	
 	@objc func updateEnterNumberButton() {
 		if let text = guessNumberField.text, !text.isEmpty {
@@ -128,6 +156,12 @@ class UserGuessViewController: UIViewController {
 			gameModel.userPickedNumber(number)
 			guessNumberField.text = ""
 			updateEnterNumberButton()
+		}
+	}
+	
+	func checkIfNeedHint() {
+		if hintsControlCenter.showHintBeforeStart {
+			toggleIsShowingHint()
 		}
 	}
 }
