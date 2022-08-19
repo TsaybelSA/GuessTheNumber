@@ -7,9 +7,6 @@
 
 import UIKit
 
-enum GuessState {
-	case computer, user
-}
 
 class ComputerGuessViewController: UIViewController {
 	
@@ -24,11 +21,13 @@ class ComputerGuessViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	var gameModel: ComputerGuessGameModel
+	let gameModel: ComputerGuessGameModel
+	var hintsControlCenter = HintsControl()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		navigationController?.navigationBar.isHidden = true
+
 		view.backgroundColor = .white
 		
 		gameModel.delegate = self
@@ -37,6 +36,7 @@ class ComputerGuessViewController: UIViewController {
 		view.addSubview(informationLabel)
 		view.addSubview(questionForNumberLabel)
 		view.addSubview(buttonsStack)
+		view.addSubview(questionmarkButton)
 		view.addSubview(resultsBackground)
 		view.addSubview(resultLabel)
 		view.addSubview(goToNextScreenButton)
@@ -53,6 +53,11 @@ class ComputerGuessViewController: UIViewController {
 			buttonsStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
 			buttonsStack.heightAnchor.constraint(equalToConstant: 100),
 			
+			questionmarkButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
+			questionmarkButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+			questionmarkButton.heightAnchor.constraint(equalToConstant: 100),
+			questionmarkButton.widthAnchor.constraint(equalToConstant: 100),
+			
 			resultsBackground.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			resultsBackground.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 			resultsBackground.widthAnchor.constraint(equalToConstant: 300),
@@ -68,6 +73,7 @@ class ComputerGuessViewController: UIViewController {
 			goToNextScreenButton.widthAnchor.constraint(equalToConstant: 150),
 			goToNextScreenButton.heightAnchor.constraint(equalToConstant: 70)
 		])
+		checkIfNeedHint()
     }
 	
 	lazy var informationLabel: UILabel = {
@@ -149,9 +155,10 @@ class ComputerGuessViewController: UIViewController {
 	
 	var questionmarkButton: UIButton = {
 		let button = UIButton(type: .custom)
-		button.setImage(UIImage(named: "question-mark"), for: .normal)
+		button.setImage(UIImage(named: "questionmarkLeftArrowNormal"), for: .normal)
+		button.setImage(UIImage(named: "questionmarkLeftArrowHighlighted"), for: .highlighted)
 		button.tintColor = .blue
-//		button.addTarget(nil, action: #selector(toggleIsShowingHint), for: .touchUpInside)
+		button.addTarget(nil, action: #selector(toggleIsShowingHint), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button
 	}()
@@ -167,6 +174,21 @@ class ComputerGuessViewController: UIViewController {
 			case 1: gameModel.guessedNumberIsEqual()
 			case 2: gameModel.guessedNumberIsLess()
 			default: break
+		}
+	}
+	
+	@objc func toggleIsShowingHint() {
+		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: K.Hints.computerGuess) { [weak self] showHintBeforeStart in
+			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
+				self?.hintsControlCenter.toggleHintBeforeStart()
+			}
+		}
+		navigationController?.pushViewController(rulesVC, animated: true)
+	}
+	
+	func checkIfNeedHint() {
+		if hintsControlCenter.showHintBeforeStart {
+			toggleIsShowingHint()
 		}
 	}
 	

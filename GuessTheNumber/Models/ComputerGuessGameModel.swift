@@ -29,22 +29,8 @@ class ComputerGuessGameModel {
 	
 	private(set) var possibleNumbers = [Int].init(1...100)
 	
-	//hints
-	private(set) var isShowingHint = true
-	
-	//maybe save to user defaults
-	private(set) var showHintBeforeStart = true
-	
 	var informationLine: String {
 		return "Computer is guessing\n\n Try \(numberOfTries)"
-	}
-	
-	func toggleIsShowingHint() {
-		isShowingHint.toggle()
-	}
-	
-	func toggleHintBeforeStart() {
-		showHintBeforeStart.toggle()
 	}
 	
 	func guessedNumberIsGreater() {
@@ -54,7 +40,6 @@ class ComputerGuessGameModel {
 			delegate?.wrongAnswer()
 			return
 		}
-		print(currentNumber)
 
 		numberOfTries += 1
 		possibleNumbers = possibleNumbers.filter { $0 > currentNumber }
@@ -101,10 +86,6 @@ class ComputerGuessGameModel {
 			
 			return middle
 		}
-	}
-	
-	func userPickedNumber(_ number: Int) {
-		
 	}
 	
 	init(numberToGuess: Int) {

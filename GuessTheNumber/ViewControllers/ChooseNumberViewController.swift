@@ -11,6 +11,7 @@ class ChooseNumberViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationController?.navigationBar.isHidden = true
 		
 		setupToHideKeyboardOnTapOnView()
 		
@@ -34,8 +35,8 @@ class ChooseNumberViewController: UIViewController {
 			
 			enterTheNumber.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
 			enterTheNumber.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			enterTheNumber.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
-			enterTheNumber.widthAnchor.constraint(equalToConstant: Constants.buttonWidth)
+			enterTheNumber.heightAnchor.constraint(equalToConstant: K.DrawingConstants.buttonHeight),
+			enterTheNumber.widthAnchor.constraint(equalToConstant: K.DrawingConstants.buttonWidth)
 		])
     }
 	

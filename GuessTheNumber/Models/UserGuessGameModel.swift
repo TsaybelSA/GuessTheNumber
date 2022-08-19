@@ -22,7 +22,7 @@ class UserGuessGameModel {
 	private(set) var selectedNumber: Int?
 	
 	private(set) var numberOfTries = 1
-	
+		
 	var clue: String {
 		guard let selectedNumber = selectedNumber else { return "" }
 		var line = ""

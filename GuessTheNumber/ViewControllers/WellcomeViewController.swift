@@ -24,8 +24,8 @@ class WellcomeViewController: UIViewController {
 			
 			startGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
 			startGameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			startGameButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
-			startGameButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth)
+			startGameButton.heightAnchor.constraint(equalToConstant: K.DrawingConstants.buttonHeight),
+			startGameButton.widthAnchor.constraint(equalToConstant: K.DrawingConstants.buttonWidth)
 		])
 	}
 	
