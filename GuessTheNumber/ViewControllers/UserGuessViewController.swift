@@ -195,5 +195,11 @@ extension UserGuessViewController: UserGuessGameModelDelegate {
 	func gameOver() {
 		guessNumberField.isEnabled = false
 		updateEnterNumberButton()
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+			guard let computerScore = self?.gameModel.computerScore, let userScore = self?.gameModel.numberOfTries else { return }
+			let scoreVC = ScoreViewController(computerScore: computerScore, userScore: userScore)
+			self?.navigationController?.pushViewController(scoreVC, animated: true)
+		}
 	}
 }
