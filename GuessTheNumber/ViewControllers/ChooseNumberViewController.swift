@@ -8,15 +8,26 @@
 import UIKit
 
 class ChooseNumberViewController: UIViewController {
+	
+	init(difficulty: DifficultyLevels) {
+		self.selectedDifficulty = difficulty
+		
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	let selectedDifficulty: DifficultyLevels
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		navigationController?.navigationBar.isHidden = true
-		
-		setupToHideKeyboardOnTapOnView()
-		
 		view.backgroundColor = K.Colors.appBackgroundColor
 
+		setupToHideKeyboardOnTapOnView()
+		
 		guessNumberChanged()
 		
 		view.addSubview(guessNumberField)
@@ -75,7 +86,7 @@ class ChooseNumberViewController: UIViewController {
 	
 	@objc func enterNumberButtonPressed() {
 		if let text = guessNumberField.text, let number = Int(text) {
-			navigationController?.pushViewController(ComputerGuessViewController(selectedNumber: number), animated: true)
+			navigationController?.pushViewController(ComputerGuessViewController(selectedNumber: number, difficulty: selectedDifficulty), animated: true)
 		}
 	}
 	

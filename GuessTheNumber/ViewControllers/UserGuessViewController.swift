@@ -9,7 +9,7 @@ import UIKit
 
 class UserGuessViewController: UIViewController {
 
-	init(difficulty: Difficulty, computerScore: Int) {
+	init(difficulty: DifficultyLevels, computerScore: Int) {
 		gameModel = UserGuessGameModel(difficulty: difficulty, computerScore: computerScore)
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -57,8 +57,8 @@ class UserGuessViewController: UIViewController {
 			
 			questionmarkButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
 			questionmarkButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-			questionmarkButton.heightAnchor.constraint(equalToConstant: 100),
-			questionmarkButton.widthAnchor.constraint(equalToConstant: 100),
+			questionmarkButton.heightAnchor.constraint(equalToConstant: K.DrawingConstants.questionmarkButtonHeight),
+			questionmarkButton.widthAnchor.constraint(equalToConstant: K.DrawingConstants.questionmarkButtonWidth),
 			
 			enterTheNumberButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
 			enterTheNumberButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),

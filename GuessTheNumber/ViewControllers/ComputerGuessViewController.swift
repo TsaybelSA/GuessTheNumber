@@ -12,8 +12,8 @@ class ComputerGuessViewController: UIViewController {
 	
 	//TODO: - add difficulty
 	
-	init(selectedNumber: Int) {
-		gameModel = ComputerGuessGameModel(numberToGuess: selectedNumber)
+	init(selectedNumber: Int, difficulty selectedDifficulty: DifficultyLevels) {
+		gameModel = ComputerGuessGameModel(numberToGuess: selectedNumber, difficulty: selectedDifficulty)
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -55,8 +55,8 @@ class ComputerGuessViewController: UIViewController {
 			
 			questionmarkButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
 			questionmarkButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-			questionmarkButton.heightAnchor.constraint(equalToConstant: 100),
-			questionmarkButton.widthAnchor.constraint(equalToConstant: 100),
+			questionmarkButton.heightAnchor.constraint(equalToConstant: K.DrawingConstants.questionmarkButtonHeight),
+			questionmarkButton.widthAnchor.constraint(equalToConstant: K.DrawingConstants.questionmarkButtonWidth),
 			
 			resultsBackground.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			resultsBackground.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -163,7 +163,7 @@ class ComputerGuessViewController: UIViewController {
 	}()
 	
 	@objc func goToNextScreenButtonPressed() {
-		let userGuessVC = UserGuessViewController(difficulty: .easy, computerScore: gameModel.numberOfTries)
+		let userGuessVC = UserGuessViewController(difficulty: gameModel.selectedDifficulty, computerScore: gameModel.numberOfTries)
 		navigationController?.pushViewController(userGuessVC, animated: true)
 	}
 	
