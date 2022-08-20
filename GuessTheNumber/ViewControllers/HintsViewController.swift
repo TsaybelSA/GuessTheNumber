@@ -42,18 +42,18 @@ class HintsViewController: UIViewController {
 			
 			questionMarkImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
 			questionMarkImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			questionMarkImage.heightAnchor.constraint(equalToConstant: 100),
-			questionMarkImage.widthAnchor.constraint(equalToConstant: 100),
+			questionMarkImage.heightAnchor.constraint(equalToConstant: 80),
+			questionMarkImage.widthAnchor.constraint(equalToConstant: 80),
 
-			hintLabel.topAnchor.constraint(equalTo: questionMarkImage.bottomAnchor, constant: 20),
-			hintLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-			hintLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-			hintLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
+			hintLabel.topAnchor.constraint(equalTo: questionMarkImage.bottomAnchor, constant: 10),
+			hintLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+			hintLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+			hintLabel.bottomAnchor.constraint(equalTo: sureButton.topAnchor, constant: -20),
 						
 			hintStateButton.leadingAnchor.constraint(equalTo: hintLabel.leadingAnchor),
-			hintStateButton.widthAnchor.constraint(equalToConstant: 200),
-			hintStateButton.heightAnchor.constraint(equalToConstant: 70),
-			hintStateButton.topAnchor.constraint(equalTo: hintLabel.topAnchor),
+			hintStateButton.widthAnchor.constraint(equalToConstant: 100),
+			hintStateButton.heightAnchor.constraint(equalToConstant: 80),
+			hintStateButton.bottomAnchor.constraint(equalTo: hintLabel.topAnchor),
 			
 			sureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			sureButton.heightAnchor.constraint(equalToConstant: 50),
@@ -81,8 +81,9 @@ class HintsViewController: UIViewController {
 		button.setTitleColor(UIColor.label, for: .normal)
 		button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
 		button.setImage(showHintBeforeStart ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square"), for: .normal)
+		button.titleLabel?.numberOfLines = 2
 		button.tintColor = .label
-		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
 		button.addTarget(nil, action: #selector(toggleHintState), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button

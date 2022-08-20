@@ -13,7 +13,7 @@ class ComputerGuessGameModel {
 	
 	private(set) var numberOfTries = 1
 		
-	private(set) var selectedDifficulty: Difficulty = .hard
+	private(set) var selectedDifficulty: DifficultyLevels
 	
 	private(set) var numberToGuess: Int
 	
@@ -88,8 +88,9 @@ class ComputerGuessGameModel {
 		}
 	}
 	
-	init(numberToGuess: Int) {
+	init(numberToGuess: Int, difficulty: DifficultyLevels) {
 		self.numberToGuess = numberToGuess
+		self.selectedDifficulty = difficulty
 	}
 }
 

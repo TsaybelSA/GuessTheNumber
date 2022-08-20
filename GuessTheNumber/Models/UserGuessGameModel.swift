@@ -11,7 +11,7 @@ class UserGuessGameModel {
 	
 	weak var delegate: UserGuessGameModelDelegate?
 	
-	let difficulty: Difficulty
+	let difficulty: DifficultyLevels
 	
 	let computerScore: Int
 	
@@ -58,7 +58,7 @@ class UserGuessGameModel {
 		
 	}
 	
-	init(difficulty: Difficulty, computerScore: Int) {
+	init(difficulty: DifficultyLevels, computerScore: Int) {
 		self.difficulty = difficulty
 		self.computerScore = computerScore
 		print("\(numberToGuess)")

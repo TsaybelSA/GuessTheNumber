@@ -10,7 +10,7 @@
 		171585AD28AE3E890051DF1C /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585AC28AE3E890051DF1C /* K.swift */; };
 		171585AF28AE4ED50051DF1C /* ComputerGuessGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585AE28AE4ED50051DF1C /* ComputerGuessGameModel.swift */; };
 		171585B428AF4EED0051DF1C /* UserGuessGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585B328AF4EED0051DF1C /* UserGuessGameModel.swift */; };
-		171585B628AF56A40051DF1C /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585B528AF56A40051DF1C /* Difficulty.swift */; };
+		171585B628AF56A40051DF1C /* DifficultyLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585B528AF56A40051DF1C /* DifficultyLevels.swift */; };
 		171585BA28AF76960051DF1C /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585B928AF76960051DF1C /* HintsViewController.swift */; };
 		171585BC28AF817B0051DF1C /* HintsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585BB28AF817B0051DF1C /* HintsControl.swift */; };
 		17EE21E228ADEBE0007077A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E128ADEBE0007077A7 /* AppDelegate.swift */; };
@@ -23,13 +23,14 @@
 		17EE21FA28AE2286007077A7 /* ComputerGuessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21F928AE2286007077A7 /* ComputerGuessViewController.swift */; };
 		17EE21FC28AE291D007077A7 /* ComparisonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21FB28AE291D007077A7 /* ComparisonButton.swift */; };
 		17EE21FF28AE314A007077A7 /* UserGuessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21FE28AE314A007077A7 /* UserGuessViewController.swift */; };
+		17EFDAF028AFCD5E00708812 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EFDAEF28AFCD5D00708812 /* ScoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		171585AC28AE3E890051DF1C /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		171585AE28AE4ED50051DF1C /* ComputerGuessGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerGuessGameModel.swift; sourceTree = "<group>"; };
 		171585B328AF4EED0051DF1C /* UserGuessGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGuessGameModel.swift; sourceTree = "<group>"; };
-		171585B528AF56A40051DF1C /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		171585B528AF56A40051DF1C /* DifficultyLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevels.swift; sourceTree = "<group>"; };
 		171585B928AF76960051DF1C /* HintsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
 		171585BB28AF817B0051DF1C /* HintsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsControl.swift; sourceTree = "<group>"; };
 		17EE21DE28ADEBE0007077A7 /* GuessTheNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +45,7 @@
 		17EE21F928AE2286007077A7 /* ComputerGuessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerGuessViewController.swift; sourceTree = "<group>"; };
 		17EE21FB28AE291D007077A7 /* ComparisonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonButton.swift; sourceTree = "<group>"; };
 		17EE21FE28AE314A007077A7 /* UserGuessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGuessViewController.swift; sourceTree = "<group>"; };
+		17EFDAEF28AFCD5D00708812 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,7 @@
 				171585AE28AE4ED50051DF1C /* ComputerGuessGameModel.swift */,
 				171585B328AF4EED0051DF1C /* UserGuessGameModel.swift */,
 				171585BB28AF817B0051DF1C /* HintsControl.swift */,
-				171585B528AF56A40051DF1C /* Difficulty.swift */,
+				171585B528AF56A40051DF1C /* DifficultyLevels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,6 +119,7 @@
 				17EE21F928AE2286007077A7 /* ComputerGuessViewController.swift */,
 				17EE21FE28AE314A007077A7 /* UserGuessViewController.swift */,
 				171585B928AF76960051DF1C /* HintsViewController.swift */,
+				17EFDAEF28AFCD5D00708812 /* ScoreViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				171585B428AF4EED0051DF1C /* UserGuessGameModel.swift in Sources */,
 				17EE21FC28AE291D007077A7 /* ComparisonButton.swift in Sources */,
+				17EFDAF028AFCD5E00708812 /* ScoreViewController.swift in Sources */,
 				17EE21F628ADF462007077A7 /* ChooseNumberViewController.swift in Sources */,
 				17EE21E628ADEBE0007077A7 /* WellcomeViewController.swift in Sources */,
 				17EE21F828ADF7DA007077A7 /* UtilityExtensions.swift in Sources */,
@@ -204,7 +208,7 @@
 				17EE21E428ADEBE0007077A7 /* SceneDelegate.swift in Sources */,
 				171585AD28AE3E890051DF1C /* K.swift in Sources */,
 				171585BC28AF817B0051DF1C /* HintsControl.swift in Sources */,
-				171585B628AF56A40051DF1C /* Difficulty.swift in Sources */,
+				171585B628AF56A40051DF1C /* DifficultyLevels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +352,7 @@
 				INFOPLIST_FILE = GuessTheNumber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -360,7 +365,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -376,6 +381,7 @@
 				INFOPLIST_FILE = GuessTheNumber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -388,7 +394,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
