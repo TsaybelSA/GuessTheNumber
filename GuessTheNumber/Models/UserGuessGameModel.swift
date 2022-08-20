@@ -39,7 +39,7 @@ class UserGuessGameModel {
 	func userPickedNumber(_ number: Int) {
 		selectedNumber = number
 		print("selected number \(selectedNumber)")
-		//если уровень сложности высокий - то не будет помощи в отсечении неподходящих чисел
+		//if the difficulty level is high, then there will be no help in cutting off inappropriate numbers
 		if difficulty != .hard {
 			guard let selectedNumber = selectedNumber else { return }
 			if selectedNumber > numberToGuess {
@@ -48,14 +48,13 @@ class UserGuessGameModel {
 				possibleNumbers = possibleNumbers.filter { $0 > selectedNumber }
 			}
 		}
-		numberOfTries += 1
 		delegate?.modelHasChanges()
 		
 		if selectedNumber == numberToGuess {
 			delegate?.gameOver()
 			return
 		}
-		
+		numberOfTries += 1
 	}
 	
 	init(difficulty: DifficultyLevels, computerScore: Int) {

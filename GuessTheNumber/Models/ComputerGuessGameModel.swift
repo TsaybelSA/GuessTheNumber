@@ -52,7 +52,6 @@ class ComputerGuessGameModel {
 			delegate?.wrongAnswer()
 			return
 		}
-		numberOfTries += 1
 		
 		delegate?.modelHasChanges()
 		delegate?.gameOver()
@@ -91,6 +90,9 @@ class ComputerGuessGameModel {
 	init(numberToGuess: Int, difficulty: DifficultyLevels) {
 		self.numberToGuess = numberToGuess
 		self.selectedDifficulty = difficulty
+		if difficulty == .easy {
+			currentNumber = Int.random(in: 1...100)
+		}
 	}
 }
 

@@ -45,6 +45,11 @@ class ScoreViewController: UIViewController {
 		])
     }
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+		super.viewWillDisappear(animated)
+	}
+	
 	lazy private var labelsStack: UIStackView = {
 		let stackView = UIStackView(arrangedSubviews: [scoreLabel, triesLabel, winerLabel])
 		stackView.axis = .vertical
