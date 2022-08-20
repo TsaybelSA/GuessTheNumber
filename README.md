@@ -23,7 +23,8 @@ GameViewController обрабатывает события из View, перед
 ### Требования
 iOS 13+
 
---
+---
+
 ## Basic information
 ### Reason for choosing an architectural approach
 To create this application, it is advisable to use the MVC pattern, because in this project there is no large number of models that need to transfer data between themselves, there is no networking layer and data parsing.
