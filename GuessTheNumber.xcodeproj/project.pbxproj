@@ -75,6 +75,7 @@
 		171585BD28AF84920051DF1C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				17D6B17328B0C3A900623545 /* Bungee-Regular.ttf */,
 				17EE21F728ADF7DA007077A7 /* UtilityExtensions.swift */,
 				171585AC28AE3E890051DF1C /* K.swift */,
 				17EE21FB28AE291D007077A7 /* ComparisonButton.swift */,
@@ -103,7 +104,6 @@
 			children = (
 				17EE21E128ADEBE0007077A7 /* AppDelegate.swift */,
 				17EE21E328ADEBE0007077A7 /* SceneDelegate.swift */,
-				17D6B17328B0C3A900623545 /* Bungee-Regular.ttf */,
 				171585BD28AF84920051DF1C /* Utils */,
 				171585B028AE4EE00051DF1C /* Models */,
 				17EE21FD28AE3011007077A7 /* ViewControllers */,

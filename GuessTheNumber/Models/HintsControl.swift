@@ -9,7 +9,6 @@ import Foundation
 
 struct HintsControl {
 		
-	//maybe save to user defaults
 	private(set) var showHintBeforeStart = true
 	
 	mutating func toggleHintBeforeStart() {
