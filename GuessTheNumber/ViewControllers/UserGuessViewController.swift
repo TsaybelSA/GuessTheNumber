@@ -24,6 +24,7 @@ class UserGuessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		setupToHideKeyboardOnTapOnView()
 		gameModel.delegate = self
 		modelHasChanges()
 		updateEnterNumberButton()
@@ -43,11 +44,12 @@ class UserGuessViewController: UIViewController {
 		
 		NSLayoutConstraint.activate([
 			informationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-			informationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			informationLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+			informationLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
 			
-			guessNumberField.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 20),
+			guessNumberField.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 10),
 			guessNumberField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			guessNumberField.heightAnchor.constraint(equalToConstant: 70),
+			guessNumberField.heightAnchor.constraint(equalToConstant: 60),
 			guessNumberField.widthAnchor.constraint(equalToConstant: 300),
 			
 			promptLabel.topAnchor.constraint(equalTo: guessNumberField.bottomAnchor),
@@ -71,8 +73,8 @@ class UserGuessViewController: UIViewController {
     
 	lazy var informationLabel: UILabel = {
 		let label = UILabel()
-		label.text = "You are guessing\n Try \(gameModel.numberOfTries)"
-		label.font = UIFont.systemFont(ofSize: 30)
+		let text = "You are guessing\n Try \(gameModel.numberOfTries)"
+		label.attributedText = text.makeHollowAttributedString(withSize: 30)
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +90,7 @@ class UserGuessViewController: UIViewController {
 	lazy var guessNumberField: UITextField = {
 		let textField = makeTextField()
 		textField.inputView = numberPicker
+		textField.addDoneButtonToKeyboard(myAction: #selector(textField.resignFirstResponder))
 		textField.addTarget(nil, action: #selector(updateEnterNumberButton), for: .editingDidEnd)
 		textField.backgroundColor = K.Colors.secondaryBackgroundColor
 		textField.translatesAutoresizingMaskIntoConstraints = false
@@ -129,7 +132,8 @@ class UserGuessViewController: UIViewController {
 	}()
 	
 	@objc func toggleIsShowingHint() {
-		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: K.Hints.userGuess) { [weak self] showHintBeforeStart in
+		let hintText = K.Hints.userGuess.makeAttibutedStringWith(size: 25, isBold: false)
+		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: hintText) { [weak self] showHintBeforeStart in
 			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
 				self?.hintsControlCenter.toggleHintBeforeStart()
 			}
@@ -138,7 +142,7 @@ class UserGuessViewController: UIViewController {
 	}
 	
 	@objc func updateEnterNumberButton() {
-		if let text = guessNumberField.text, !text.isEmpty {
+		if let text = guessNumberField.text, Int(text) != nil {
 			enterTheNumberButton.isEnabled = true
 			UIView.animate(withDuration: 0.4) {
 				self.enterTheNumberButton.layer.opacity = 1
@@ -182,18 +186,19 @@ extension UserGuessViewController: UIPickerViewDelegate, UIPickerViewDataSource 
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		guessNumberField.text = String(gameModel.possibleNumbers[row])
-		guessNumberField.resignFirstResponder()
 	}
 }
 
 extension UserGuessViewController: UserGuessGameModelDelegate {
 	func modelHasChanges() {
-		informationLabel.text = "You are guessing\n\n Try \(gameModel.numberOfTries)"
+		let text = "You are guessing\n\n Try \(gameModel.numberOfTries)"
+		informationLabel.attributedText = text.makeHollowAttributedString(withSize: 30)
 		promptLabel.makeTypeEffectFor(gameModel.clue)
 	}
 	
 	func gameOver() {
 		guessNumberField.isEnabled = false
+		questionmarkButton.isEnabled = false
 		updateEnterNumberButton()
 		
 		DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in

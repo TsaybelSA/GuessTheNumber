@@ -9,9 +9,7 @@ import UIKit
 
 
 class ComputerGuessViewController: UIViewController {
-	
-	//TODO: - add difficulty
-	
+		
 	init(selectedNumber: Int, difficulty selectedDifficulty: DifficultyLevels) {
 		gameModel = ComputerGuessGameModel(numberToGuess: selectedNumber, difficulty: selectedDifficulty)
 		super.init(nibName: nil, bundle: nil)
@@ -27,6 +25,7 @@ class ComputerGuessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		navigationController?.navigationBar.isHidden = true
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
 		view.backgroundColor = K.Colors.appBackgroundColor
 
@@ -42,8 +41,9 @@ class ComputerGuessViewController: UIViewController {
 		view.addSubview(goToNextScreenButton)
 		
 		NSLayoutConstraint.activate([
-			informationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-			informationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			informationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+			informationLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+			informationLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
 			
 			questionForNumberLabel.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 40),
 			questionForNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -78,8 +78,8 @@ class ComputerGuessViewController: UIViewController {
 	
 	lazy var informationLabel: UILabel = {
 		let label = UILabel()
-		label.text = "Computer is guessing\n\n Try \(gameModel.numberOfTries)"
-		label.font = UIFont.systemFont(ofSize: 30)
+		let text = "Computer is guessing\n\n Try \(gameModel.numberOfTries)"
+		label.attributedText = text.makeHollowAttributedString(withSize: 30)
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -177,7 +177,8 @@ class ComputerGuessViewController: UIViewController {
 	}
 	
 	@objc func toggleIsShowingHint() {
-		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: K.Hints.computerGuess) { [weak self] showHintBeforeStart in
+		let hintText = K.Hints.computerGuess.makeAttibutedStringWith(size: 25, isBold: false)
+		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: hintText) { [weak self] showHintBeforeStart in
 			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
 				self?.hintsControlCenter.toggleHintBeforeStart()
 			}
@@ -193,19 +194,24 @@ class ComputerGuessViewController: UIViewController {
 	
 	func updateQuestionLabel() {
 		let resultString = NSMutableAttributedString()
-		
-		var attributes = [NSAttributedString.Key: AnyObject]()
-		attributes[.font] = UIFont.systemFont(ofSize: 30)
-		resultString.append(NSAttributedString(string: "Your number is ", attributes: attributes))
-		
-		
-		attributes[.font] = UIFont.boldSystemFont(ofSize: 40)
-		resultString.append(NSAttributedString(string: String(gameModel.currentNumber), attributes: attributes))
-		
-		attributes[.font] = UIFont.systemFont(ofSize: 30)
-		resultString.append(NSAttributedString(string: " ?", attributes: attributes))
+		resultString.append("Your number is ".makeAttibutedStringWith(size: 30, isBold: false))
+		resultString.append(String(gameModel.currentNumber).makeAttibutedStringWith(size: 40, isBold: true))
+		resultString.append(" ?".makeAttibutedStringWith(size: 30, isBold: true))
 		
 		questionForNumberLabel.attributedText = resultString
+	}
+	
+	func updateResultLabel() {
+		let resultString = NSMutableAttributedString()
+		resultString.append("Your number is ".makeAttibutedStringWith(size: 30, isBold: false))
+		resultString.append("\(gameModel.currentNumber)\n".makeAttibutedStringWith(size: 30, isBold: true))
+		resultString.append("Computer guessed it on the ".makeAttibutedStringWith(size: 25, isBold: false))
+		
+		resultString.append("\(gameModel.numberOfTries) ".makeAttibutedStringWith(size: 30, isBold: true))
+		let tryOrTries = gameModel.numberOfTries > 1 ? "tries.\n" : "try.\n"
+		resultString.append(tryOrTries.makeAttibutedStringWith(size: 25, isBold: false))
+		resultString.append("Now is you turn to guess!".makeAttibutedStringWith(size: 30, isBold: true))
+		resultLabel.attributedText = resultString
 	}
 }
 
@@ -218,16 +224,18 @@ extension ComputerGuessViewController: GameModelDelegate {
 	}
 	
 	func modelHasChanges() {
-		informationLabel.text = gameModel.informationLine
+		let newText = gameModel.informationLine.makeHollowAttributedString(withSize: 30)
+		informationLabel.attributedText = newText
 		updateQuestionLabel()
 		print(gameModel.possibleNumbers)
 	}
 	
 	func gameOver() {
-		resultLabel.text = "Your number is \(gameModel.currentNumber)\n Computer guessed it from \(gameModel.numberOfTries) tries\n Now is you turn to guess!"
+		updateResultLabel()
 		
 		let buttons = buttonsStack.subviews as! [UIButton]
 		buttons.forEach({ $0.isEnabled = false })
+		questionmarkButton.isEnabled = false
 		
 		resultsBackground.layer.opacity = 0
 		resultLabel.layer.opacity = 0

@@ -113,3 +113,26 @@ extension UIButton {
 		self.layer.shadowRadius = 8
 	}
 }
+
+extension String {
+	func makeHollowAttributedString(withSize size: Int) -> NSMutableAttributedString {
+		let fontFamily = UIFont(name: "Bungee-Regular", size: CGFloat(size))!
+		let strokeTextAttributes = [
+			NSAttributedString.Key.strokeColor : K.Colors.mainLabelColor,
+			NSAttributedString.Key.strokeWidth : 5.0,
+			NSAttributedString.Key.font : fontFamily]
+			as [NSAttributedString.Key : Any]
+		return NSMutableAttributedString(string: self, attributes: strokeTextAttributes)
+	}
+	
+	func makeAttibutedStringWith(size: Int, isBold: Bool) -> NSMutableAttributedString {
+		var attributes = [NSAttributedString.Key: AnyObject]()
+		if isBold {
+			attributes[.font] = UIFont.boldSystemFont(ofSize: CGFloat(size))
+		} else {
+			attributes[.font] = UIFont.systemFont(ofSize: CGFloat(size))
+		}
+		return NSMutableAttributedString(attributedString: NSAttributedString(string: self, attributes: attributes))
+
+	}
+}

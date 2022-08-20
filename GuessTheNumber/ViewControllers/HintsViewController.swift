@@ -9,7 +9,7 @@ import UIKit
 
 class HintsViewController: UIViewController {
 
-	init(_ showHintBeforeStart: Bool, hint: String, complitionHandler: @escaping (Bool) -> Void) {
+	init(_ showHintBeforeStart: Bool, hint: NSMutableAttributedString, complitionHandler: @escaping (Bool) -> Void) {
 		self.showHintBeforeStart = showHintBeforeStart
 		self.hintString = hint
 		self.complitionHandler = complitionHandler
@@ -24,7 +24,7 @@ class HintsViewController: UIViewController {
 	
 	var showHintBeforeStart: Bool
 	
-	let hintString: String
+	let hintString: NSMutableAttributedString
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,24 +66,22 @@ class HintsViewController: UIViewController {
 		let label = UILabel()
 		label.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
 		label.textColor = .label
-		label.text = hintString
+		label.attributedText = hintString
 		label.numberOfLines = 0
 		label.adjustsFontSizeToFitWidth = true
-		label.textAlignment = .center
-		label.font = UIFont.preferredFont(forTextStyle: .title1)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
 	lazy var hintStateButton: UIButton = {
 		let button = UIButton(type: .system)
-		button.setTitle(" Show hints", for: .normal)
+		button.setTitle("Show hints", for: .normal)
 		button.setTitleColor(UIColor.label, for: .normal)
 		button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
 		button.setImage(showHintBeforeStart ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square"), for: .normal)
 		button.titleLabel?.numberOfLines = 2
 		button.tintColor = .label
-		button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
 		button.addTarget(nil, action: #selector(toggleHintState), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		return button

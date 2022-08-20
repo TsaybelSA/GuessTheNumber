@@ -30,14 +30,19 @@ class ChooseNumberViewController: UIViewController {
 		
 		guessNumberChanged()
 		
+		view.addSubview(explanationLabel)
 		view.addSubview(guessNumberField)
 		view.addSubview(promptLabel)
 		view.addSubview(enterTheNumber)
 		
 		NSLayoutConstraint.activate([
-			guessNumberField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+			explanationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+			explanationLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+			explanationLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+			
+			guessNumberField.topAnchor.constraint(equalTo: explanationLabel.bottomAnchor, constant: 10),
 			guessNumberField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			guessNumberField.heightAnchor.constraint(equalToConstant: 70),
+			guessNumberField.heightAnchor.constraint(equalToConstant: 60),
 			guessNumberField.widthAnchor.constraint(equalToConstant: 300),
 			
 			promptLabel.topAnchor.constraint(equalTo: guessNumberField.bottomAnchor, constant: 20),
@@ -50,6 +55,16 @@ class ChooseNumberViewController: UIViewController {
 			enterTheNumber.widthAnchor.constraint(equalToConstant: K.DrawingConstants.buttonWidth)
 		])
     }
+	
+	var explanationLabel: UILabel = {
+		let label = UILabel(frame: CGRect())
+		label.textAlignment = .center
+		label.numberOfLines = 0
+		let text = "Pick a number for the computer to guess"
+		label.attributedText = text.makeHollowAttributedString(withSize: 30)
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}()
 	
 	var guessNumberField: UITextField = {
 		let textField = makeTextField()
@@ -100,8 +115,10 @@ class ChooseNumberViewController: UIViewController {
 				}
 				return
 			} else {
-				promptLabel.text = "Number to guess should be from 1 to 100"
+				promptLabel.text = "*number to guess should be from 1 to 100"
 			}
+		} else if let text = guessNumberField.text, text.count > 0 {
+			promptLabel.text = "*please enter a 'NUMBER'"
 		} else {
 			promptLabel.text = ""
 		}

@@ -13,6 +13,7 @@
 		171585B628AF56A40051DF1C /* DifficultyLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585B528AF56A40051DF1C /* DifficultyLevels.swift */; };
 		171585BA28AF76960051DF1C /* HintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585B928AF76960051DF1C /* HintsViewController.swift */; };
 		171585BC28AF817B0051DF1C /* HintsControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171585BB28AF817B0051DF1C /* HintsControl.swift */; };
+		17D6B17428B0C3A900623545 /* Bungee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17D6B17328B0C3A900623545 /* Bungee-Regular.ttf */; };
 		17EE21E228ADEBE0007077A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E128ADEBE0007077A7 /* AppDelegate.swift */; };
 		17EE21E428ADEBE0007077A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E328ADEBE0007077A7 /* SceneDelegate.swift */; };
 		17EE21E628ADEBE0007077A7 /* WellcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE21E528ADEBE0007077A7 /* WellcomeViewController.swift */; };
@@ -33,6 +34,7 @@
 		171585B528AF56A40051DF1C /* DifficultyLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevels.swift; sourceTree = "<group>"; };
 		171585B928AF76960051DF1C /* HintsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsViewController.swift; sourceTree = "<group>"; };
 		171585BB28AF817B0051DF1C /* HintsControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintsControl.swift; sourceTree = "<group>"; };
+		17D6B17328B0C3A900623545 /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
 		17EE21DE28ADEBE0007077A7 /* GuessTheNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessTheNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EE21E128ADEBE0007077A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17EE21E328ADEBE0007077A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				17EE21E128ADEBE0007077A7 /* AppDelegate.swift */,
 				17EE21E328ADEBE0007077A7 /* SceneDelegate.swift */,
+				17D6B17328B0C3A900623545 /* Bungee-Regular.ttf */,
 				171585BD28AF84920051DF1C /* Utils */,
 				171585B028AE4EE00051DF1C /* Models */,
 				17EE21FD28AE3011007077A7 /* ViewControllers */,
@@ -182,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D6B17428B0C3A900623545 /* Bungee-Regular.ttf in Resources */,
 				17EE21EE28ADEBE1007077A7 /* LaunchScreen.storyboard in Resources */,
 				17EE21EB28ADEBE1007077A7 /* Assets.xcassets in Resources */,
 			);

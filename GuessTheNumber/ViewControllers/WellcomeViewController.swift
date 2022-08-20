@@ -28,8 +28,9 @@ class WellcomeViewController: UIViewController {
 		view.addSubview(difficultyStack)
 		
 		NSLayoutConstraint.activate([
-			gameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
-			gameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			gameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+			gameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 70),
+			gameLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -70),
 			
 			questionmarkButton.bottomAnchor.constraint(equalTo: difficultyStack.topAnchor, constant: -10),
 			questionmarkButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
@@ -60,12 +61,12 @@ class WellcomeViewController: UIViewController {
 		tableHeight?.isActive = true
 		super.viewWillLayoutSubviews()
 	}
-	
-	
+		
 	var gameLabel: UILabel = {
 		let label = UILabel(frame: CGRect())
-		label.text = "Guess The Number"
-		label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+		label.textAlignment = .center
+		label.numberOfLines = 0
+		label.attributedText = "Guess The Number".makeHollowAttributedString(withSize: 50)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -128,7 +129,8 @@ class WellcomeViewController: UIViewController {
 	}()
 	
 	@objc func toggleIsShowingHint() {
-		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: K.Hints.difficultySelection) { [weak self] showHintBeforeStart in
+		let hintText = K.Hints.difficultySelection
+		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: hintText) { [weak self] showHintBeforeStart in
 			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
 				self?.hintsControlCenter.toggleHintBeforeStart()
 			}
