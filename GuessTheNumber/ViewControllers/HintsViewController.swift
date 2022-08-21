@@ -20,9 +20,9 @@ class HintsViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	var complitionHandler: (Bool) -> Void
+	private var complitionHandler: (Bool) -> Void
 	
-	var showHintBeforeStart: Bool
+	private(set) var showHintBeforeStart: Bool
 	
 	let hintString: NSMutableAttributedString
 	
@@ -73,7 +73,7 @@ class HintsViewController: UIViewController {
 		return label
 	}()
 	
-	lazy var hintStateButton: UIButton = {
+	lazy private var hintStateButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Show hints", for: .normal)
 		button.setTitleColor(UIColor.label, for: .normal)
@@ -87,7 +87,7 @@ class HintsViewController: UIViewController {
 		return button
 	}()
 	
-	var sureButton: UIButton = {
+	private var sureButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Sure", for: .normal)
 		button.setTitleColor(UIColor.white, for: .normal)
@@ -100,7 +100,7 @@ class HintsViewController: UIViewController {
 		return button
 	}()
 	
-	var questionMarkImage: UIImageView = {
+	private var questionMarkImage: UIImageView = {
 		let image = UIImage(named: "question-mark")
 		let imageView = UIImageView(image: image)
 		imageView.contentMode = .scaleAspectFit
@@ -109,12 +109,12 @@ class HintsViewController: UIViewController {
 	}()
 	
 	
-	@objc func toggleHintState() {
+	@objc private func toggleHintState() {
 		showHintBeforeStart.toggle()
 		hintStateButton.setImage(showHintBeforeStart ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square"), for: .normal)
 	}
 	
-	@objc func closeView() {
+	@objc private func closeView() {
 		complitionHandler(showHintBeforeStart)
 		navigationController?.popViewController(animated: true)
 	}

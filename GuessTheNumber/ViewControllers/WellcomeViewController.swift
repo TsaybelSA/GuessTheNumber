@@ -9,13 +9,13 @@ import UIKit
 
 class WellcomeViewController: UIViewController {
 	
-	let difficultyLevels = DifficultyLevels.allCases.map({ $0.rawValue.capitalized })
+	private let difficultyLevels = DifficultyLevels.allCases.map({ $0.rawValue.capitalized })
 	
-	var selectedDifficulty: DifficultyLevels?
+	private var selectedDifficulty: DifficultyLevels?
 	
-	var tableHeight: NSLayoutConstraint?
+	private var tableHeight: NSLayoutConstraint?
 	
-	var hintsControlCenter = HintsControl()
+	private var hintsControlCenter = HintsControl()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,7 +37,6 @@ class WellcomeViewController: UIViewController {
 			questionmarkButton.widthAnchor.constraint(equalToConstant: K.DrawingConstants.questionmarkButtonWidth),
 			questionmarkButton.heightAnchor.constraint(equalToConstant: K.DrawingConstants.questionmarkButtonHeight),
 
-			
 			difficultyStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
 			difficultyStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
 			difficultyStack.bottomAnchor.constraint(equalTo: startGameButton.topAnchor, constant: -30),
@@ -62,7 +61,7 @@ class WellcomeViewController: UIViewController {
 		super.viewWillLayoutSubviews()
 	}
 		
-	var gameLabel: UILabel = {
+	private var gameLabel: UILabel = {
 		let label = UILabel(frame: CGRect())
 		label.textAlignment = .center
 		label.numberOfLines = 0
@@ -80,7 +79,7 @@ class WellcomeViewController: UIViewController {
 		return stack
 	}()
 	
-	var difficultyButton: UIButton = {
+	private var difficultyButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
 		button.setTitle("Select difficulty", for: .normal)
@@ -105,7 +104,7 @@ class WellcomeViewController: UIViewController {
 		return table
 	}()
 	
-	var startGameButton: UIButton = {
+	private var startGameButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Start New Game", for: .normal)
 		button.setTitleColor(UIColor.white, for: .normal)
@@ -119,7 +118,7 @@ class WellcomeViewController: UIViewController {
 		return button
 	}()
 	
-	var questionmarkButton: UIButton = {
+	private var questionmarkButton: UIButton = {
 		let button = UIButton(type: .custom)
 		button.setImage(UIImage(named: "question-mark"), for: .normal)
 		button.tintColor = .blue
@@ -128,7 +127,7 @@ class WellcomeViewController: UIViewController {
 		return button
 	}()
 	
-	@objc func toggleIsShowingHint() {
+	@objc private func toggleIsShowingHint() {
 		let hintText = K.Hints.difficultySelection
 		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: hintText) { [weak self] showHintBeforeStart in
 			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
@@ -138,7 +137,7 @@ class WellcomeViewController: UIViewController {
 		navigationController?.pushViewController(rulesVC, animated: true)
 	}
 	
-	@objc func toggleTableViewAppearance() {
+	@objc private func toggleTableViewAppearance() {
 		UIView.animate(withDuration: 0.3) {
 			self.tableView.isHidden.toggle()
 		}
@@ -149,7 +148,7 @@ class WellcomeViewController: UIViewController {
 		}
 	}
 	
-	@objc func startGameButtonPressed() {
+	@objc private func startGameButtonPressed() {
 		if let selectedDifficulty = selectedDifficulty {
 			navigationController?.pushViewController(ChooseNumberViewController(difficulty: selectedDifficulty), animated: true)
 		} else {

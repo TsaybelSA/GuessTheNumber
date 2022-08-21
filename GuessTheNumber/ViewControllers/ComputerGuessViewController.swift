@@ -19,8 +19,8 @@ class ComputerGuessViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	let gameModel: ComputerGuessGameModel
-	var hintsControlCenter = HintsControl()
+	private let gameModel: ComputerGuessGameModel
+	private var hintsControlCenter = HintsControl()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,17 +76,15 @@ class ComputerGuessViewController: UIViewController {
 		checkIfNeedHint()
     }
 	
-	lazy var informationLabel: UILabel = {
+	private var informationLabel: UILabel = {
 		let label = UILabel()
-		let text = "Computer is guessing\n\n Try \(gameModel.numberOfTries)"
-		label.attributedText = text.makeHollowAttributedString(withSize: 30)
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
-	var questionForNumberLabel: UILabel = {
+	private var questionForNumberLabel: UILabel = {
 		let label = UILabel()
 		label.numberOfLines = 0
 		label.textAlignment = .center
@@ -120,7 +118,7 @@ class ComputerGuessViewController: UIViewController {
 		return stackView
 	}()
 		
-	var resultsBackground: UIView = {
+	private var resultsBackground: UIView = {
 		let background = UIView()
 		background.backgroundColor = K.Colors.secondaryBackgroundColor
 		background.layer.cornerRadius = 25
@@ -139,7 +137,7 @@ class ComputerGuessViewController: UIViewController {
 		return label
 	}()
 	
-	var goToNextScreenButton: UIButton = {
+	private var goToNextScreenButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Let`s go", for: .normal)
 		button.setTitleColor(UIColor.white, for: .normal)
@@ -153,7 +151,7 @@ class ComputerGuessViewController: UIViewController {
 		return button
 	}()
 	
-	var questionmarkButton: UIButton = {
+	private var questionmarkButton: UIButton = {
 		let button = UIButton(type: .custom)
 		button.setImage(UIImage(named: "question-mark"), for: .normal)
 		button.tintColor = .blue
@@ -162,12 +160,12 @@ class ComputerGuessViewController: UIViewController {
 		return button
 	}()
 	
-	@objc func goToNextScreenButtonPressed() {
+	@objc private func goToNextScreenButtonPressed() {
 		let userGuessVC = UserGuessViewController(difficulty: gameModel.selectedDifficulty, computerScore: gameModel.numberOfTries)
 		navigationController?.pushViewController(userGuessVC, animated: true)
 	}
 	
-	@objc func comparisonButtonPressed(_ sender: UIButton) {
+	@objc private func comparisonButtonPressed(_ sender: UIButton) {
 		switch sender.tag {
 			case 0: gameModel.guessedNumberIsGreater()
 			case 1: gameModel.guessedNumberIsEqual()
@@ -176,7 +174,7 @@ class ComputerGuessViewController: UIViewController {
 		}
 	}
 	
-	@objc func toggleIsShowingHint() {
+	@objc private func toggleIsShowingHint() {
 		let hintText = K.Hints.computerGuess.makeAttibutedStringWith(size: 25, isBold: false)
 		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: hintText) { [weak self] showHintBeforeStart in
 			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
@@ -186,13 +184,13 @@ class ComputerGuessViewController: UIViewController {
 		navigationController?.pushViewController(rulesVC, animated: true)
 	}
 	
-	func checkIfNeedHint() {
+	private func checkIfNeedHint() {
 		if hintsControlCenter.showHintBeforeStart {
 			toggleIsShowingHint()
 		}
 	}
 	
-	func updateQuestionLabel() {
+	private func updateQuestionLabel() {
 		let resultString = NSMutableAttributedString()
 		resultString.append("Your number is ".makeAttibutedStringWith(size: 30, isBold: false))
 		resultString.append(String(gameModel.currentNumber).makeAttibutedStringWith(size: 40, isBold: true))
@@ -201,7 +199,7 @@ class ComputerGuessViewController: UIViewController {
 		questionForNumberLabel.attributedText = resultString
 	}
 	
-	func updateResultLabel() {
+	private func updateResultLabel() {
 		let resultString = NSMutableAttributedString()
 		resultString.append("Your number is ".makeAttibutedStringWith(size: 30, isBold: false))
 		resultString.append("\(gameModel.currentNumber)\n".makeAttibutedStringWith(size: 30, isBold: true))

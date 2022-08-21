@@ -19,7 +19,7 @@ class ChooseNumberViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	let selectedDifficulty: DifficultyLevels
+	private let selectedDifficulty: DifficultyLevels
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class ChooseNumberViewController: UIViewController {
 		])
     }
 	
-	var explanationLabel: UILabel = {
+	private var explanationLabel: UILabel = {
 		let label = UILabel(frame: CGRect())
 		label.textAlignment = .center
 		label.numberOfLines = 0
@@ -66,7 +66,7 @@ class ChooseNumberViewController: UIViewController {
 		return label
 	}()
 	
-	var guessNumberField: UITextField = {
+	private var guessNumberField: UITextField = {
 		let textField = makeTextField()
 		textField.addDoneButtonToKeyboard(myAction: #selector(textField.resignFirstResponder))
 		textField.addTarget(nil, action: #selector(guessNumberChanged), for: .editingChanged)
@@ -75,7 +75,7 @@ class ChooseNumberViewController: UIViewController {
 		return textField
 	}()
 	
-	var promptLabel: UILabel = {
+	private var promptLabel: UILabel = {
 		let label = UILabel()
 		label.text = ""
 		label.font = UIFont.systemFont(ofSize: 20)
@@ -86,7 +86,7 @@ class ChooseNumberViewController: UIViewController {
 		return label
 	}()
 	
-	var enterTheNumber: UIButton = {
+	private var enterTheNumber: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Enter The Number", for: .normal)
 		button.setTitleColor(UIColor.white, for: .normal)
@@ -99,13 +99,13 @@ class ChooseNumberViewController: UIViewController {
 		return button
 	}()
 	
-	@objc func enterNumberButtonPressed() {
+	@objc private func enterNumberButtonPressed() {
 		if let text = guessNumberField.text, let number = Int(text) {
 			navigationController?.pushViewController(ComputerGuessViewController(selectedNumber: number, difficulty: selectedDifficulty), animated: true)
 		}
 	}
 	
-	@objc func guessNumberChanged() {
+	@objc private func guessNumberChanged() {
 		if let text = guessNumberField.text, let number = Int(text) {
 			if number >= 1 && number <= 100 {
 				promptLabel.text = ""

@@ -95,7 +95,7 @@ class ScoreViewController: UIViewController {
 		return label
 	}()
 	
-	var mainMenuButton: UIButton = {
+	private var mainMenuButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Main menu", for: .normal)
 		button.setTitleColor(UIColor.white, for: .normal)
@@ -108,7 +108,7 @@ class ScoreViewController: UIViewController {
 		return button
 	}()
 	
-	@objc func mainMenuButtonPressed() {
+	@objc private func mainMenuButtonPressed() {
 		guard let wellcomeVC = navigationController?.viewControllers.first else { return }
 		navigationController?.popToViewController(wellcomeVC, animated: true)
 	}

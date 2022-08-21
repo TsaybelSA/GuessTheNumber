@@ -11,7 +11,7 @@ class UserGuessGameModel {
 	
 	weak var delegate: UserGuessGameModelDelegate?
 	
-	let difficulty: DifficultyLevels
+	private let difficulty: DifficultyLevels
 	
 	let computerScore: Int
 	

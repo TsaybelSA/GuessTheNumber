@@ -16,9 +16,9 @@ struct HintsControl {
 		saveToUserDefaults()
 	}
 	
-	let userDefaults = UserDefaults.standard
+	private let userDefaults = UserDefaults.standard
 	
-	let key = "showHintBeforeStart"
+	private let key = "showHintBeforeStart"
 	
 	private mutating func saveToUserDefaults() {
 		userDefaults.set(showHintBeforeStart, forKey: key)
