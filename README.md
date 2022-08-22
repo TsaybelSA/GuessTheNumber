@@ -30,9 +30,11 @@ iOS 13+
 
 ## Basic information
 ### Reason for choosing an architectural approach
-To create this application, it is advisable to use the MVC pattern, because in this project there is no large number of models that need to transfer data between themselves, there is no networking layer and data parsing.
-To separate the responsibility of the application layers, in our case, one model is enough, which will be responsible for the game logic, and one that would save the settings of the help window;
-The GameViewController handles events from the View, passes information to the model, and receives notification of changes to the model; The View displays the data that the ViewController passes to it.
+To create this application, it is advisable to use the MVC pattern, because in this project, the views are quite simple and do not have a large number of interactive elements that call their methods, then the use of MVP, and even more so VIPER, it seems to me, is unnecessary, because transferring logic from ViewController to Presenter will increase the amount of code and complicate the application logic (more likely to make mistakes and leave a bug =)). But, if you complicate the view, add elements and methods to respond to user actions, then you may encounter the Massive View Controller problem. To separate the responsibility of the application layers, in our case, one model is enough, which will be responsible for the game logic, and one that would save the settings of the help window; The GameViewController handles events from the View, passes information to the model, and receives notification of changes from the model; The View displays the data that the ViewController passes to it.
+### Features
+- Adaptation of UI for dark/light design
+- Choice of difficulty level
+- Hints on the screens
 ### Rules of the game
 The user guesses any integer number (from 1 to 100). The guesser (computer) must guess the number, focusing on the hints of the guesser.
 The guesser can only answer "greater than", "less than" or "equal to".
