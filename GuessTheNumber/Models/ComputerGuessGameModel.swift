@@ -70,7 +70,7 @@ class ComputerGuessGameModel {
 		delegate?.modelHasChanges()
 	}
 	
-	func selectNumber() -> Int {
+	private func selectNumber() -> Int {
 		guard !possibleNumbers.isEmpty else {
 			print("Possible numbers array is empty!")
 			return 0

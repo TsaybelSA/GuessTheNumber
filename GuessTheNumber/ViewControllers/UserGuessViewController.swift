@@ -18,20 +18,20 @@ class UserGuessViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	let gameModel: UserGuessGameModel
-	var hintsControlCenter = HintsControl()
+	private let gameModel: UserGuessGameModel
+	private var hintsControlCenter = HintsControl()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		setupToHideKeyboardOnTapOnView()
-		gameModel.delegate = self
 		modelHasChanges()
 		updateEnterNumberButton()
 		
 		navigationController?.navigationBar.isHidden = true
-
 		view.backgroundColor = K.Colors.appBackgroundColor
+
+		gameModel.delegate = self
 
 		numberPicker.delegate = self
 		numberPicker.dataSource = self
@@ -71,23 +71,21 @@ class UserGuessViewController: UIViewController {
 		checkIfNeedHint()
     }
     
-	lazy var informationLabel: UILabel = {
+	private var informationLabel: UILabel = {
 		let label = UILabel()
-		let text = "You are guessing\n Try \(gameModel.numberOfTries)"
-		label.attributedText = text.makeHollowAttributedString(withSize: 30)
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
-	var numberPicker: UIPickerView = {
+	private var numberPicker: UIPickerView = {
 		let picker = UIPickerView()
 		picker.translatesAutoresizingMaskIntoConstraints = false
 		return picker
 	}()
 	
-	lazy var guessNumberField: UITextField = {
+	lazy private var guessNumberField: UITextField = {
 		let textField = makeTextField()
 		textField.inputView = numberPicker
 		textField.addDoneButtonToKeyboard(myAction: #selector(textField.resignFirstResponder))
@@ -97,7 +95,7 @@ class UserGuessViewController: UIViewController {
 		return textField
 	}()
 	
-	var promptLabel: UILabel = {
+	private var promptLabel: UILabel = {
 		let label = UILabel()
 		label.text = ""
 		label.font = UIFont.systemFont(ofSize: 35)
@@ -109,7 +107,7 @@ class UserGuessViewController: UIViewController {
 		return label
 	}()
 	
-	var questionmarkButton: UIButton = {
+	private var questionmarkButton: UIButton = {
 		let button = UIButton(type: .custom)
 		button.setImage(UIImage(named: "question-mark"), for: .normal)
 		button.tintColor = .blue
@@ -118,7 +116,7 @@ class UserGuessViewController: UIViewController {
 		return button
 	}()
 	
-	var enterTheNumberButton: UIButton = {
+	private var enterTheNumberButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setTitle("Enter The Number", for: .normal)
 		button.setTitleColor(UIColor.white, for: .normal)
@@ -131,7 +129,7 @@ class UserGuessViewController: UIViewController {
 		return button
 	}()
 	
-	@objc func toggleIsShowingHint() {
+	@objc private func toggleIsShowingHint() {
 		let hintText = K.Hints.userGuess.makeAttibutedStringWith(size: 25, isBold: false)
 		let rulesVC = HintsViewController(hintsControlCenter.showHintBeforeStart, hint: hintText) { [weak self] showHintBeforeStart in
 			if self?.hintsControlCenter.showHintBeforeStart != showHintBeforeStart {
@@ -141,7 +139,7 @@ class UserGuessViewController: UIViewController {
 		navigationController?.pushViewController(rulesVC, animated: true)
 	}
 	
-	@objc func updateEnterNumberButton() {
+	@objc private func updateEnterNumberButton() {
 		if let text = guessNumberField.text, Int(text) != nil {
 			enterTheNumberButton.isEnabled = true
 			UIView.animate(withDuration: 0.4) {
@@ -155,7 +153,7 @@ class UserGuessViewController: UIViewController {
 		}
 	}
 	
-	@objc func enterTheNumberButtonPressed() {
+	@objc private func enterTheNumberButtonPressed() {
 		if let text = guessNumberField.text, let number = Int(text) {
 			gameModel.userPickedNumber(number)
 			guessNumberField.text = ""
@@ -163,7 +161,7 @@ class UserGuessViewController: UIViewController {
 		}
 	}
 	
-	func checkIfNeedHint() {
+	private func checkIfNeedHint() {
 		if hintsControlCenter.showHintBeforeStart {
 			toggleIsShowingHint()
 		}
